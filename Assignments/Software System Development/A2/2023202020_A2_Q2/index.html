@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify Track Information</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- <script src="script.js"></script> -->
+</head>
+<body>
+  <p class="heading">PLAYING WITH SPOTIFY API</p>
+  <div id="container">
+
+    <!-- <form id="search-form">
+      <label for="query">Enter song name:</label>
+      <input type="text" id="query" name="query" placeholder="Enter a name">
+      <button type="submit">Search</button>
+    </form>
+    <iframe id="spotify-link" style="border-radius:12px" src="" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+     -->
+
+  <div id="track-info">
+    <h1>Track Information</h1>
+    <h2>Track Name: <span id="track-name"></span></h2>
+    <p>Artist: <span id="artist-name"></span></p>
+    <p>Album: <span id="album-name"></span></p>
+    <p>Explicit: <span id="album-type"></span></p>
+    <p>Release Date: <span id="release-date"></span></p>
+    <p>Duration: <span id="duration"></span></p>
+    <p>Explicit: <span id="explicit"></span></p>
+    <p>Popularity: <span id="popularity"></span></p> 
+    <!-- <a id="spotify-link" href="#" target="_blank"><center>Listen on Spotify</center></a>  -->
+    <iframe id="spotify-link" style="border-radius:12px" src="" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    
+    <!-- <div id="dynamic-content"></div> -->
+  </div>
+
+  <div id="playlist-details">
+    <h1>Playlist Information</h1>
+      <h2>Playlist Name: <span id="playlist-name"></span></h2>
+      <img id="playlist-image" src="#" alt="Playlist Image" width="100">
+      <p>Description: <span id="playlist-description"></span></p>
+      <p>Owner: <span id="playlist-owner"></span></p>
+      <p>Followers: <span id="playlist-followers"></span></p>
+      <p>Public: <span id="playlist-public"></span></p>
+      <p>Total Tracks: <span id="playlist-total-tracks"></span></p>
+      <!-- <a id="playlist-spotify-link" href="#" target="_blank"><center>View on Spotify</center></a> -->
+      <iframe id="playlist-spotify-link" style="border-radius:12px" src="" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+    </div>
+
+    <h2 id="playlist-heading">Top 3 Songs of <span id="playname"></span></h2>
+    <div id="top-songs">
+      
+      <div class="song" id="song-1">
+        <h3><span class="song-name"></span></h3>
+        <p>Artist: <span class="song-artist"></span></p>
+        <p>Album: <span class="song-album"></span></p>
+        <p>Release Date: <span class="song-release-date"></span></p>
+        <p>Duration: <span class="song-duration"></span></p>
+        <p>Popularity: <span class="song-popularity"></span></p>
+        <p>Explict: <span class="song-explict"></span></p>
+        <!-- <a id="spotify-link" href="#" target="_blank"><center>Listen on Spotify</center></a>  -->
+        <iframe id="spotify-link"  style="border-radius:12px" src="" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+      </div>
+      
+      <div class="song" id="song-2">
+        <h3><span class="song-name"></span></h3>
+        <p>Artist: <span class="song-artist"></span></p>
+        <p>Album: <span class="song-album"></span></p>
+        <p>Release Date: <span class="song-release-date"></span></p>
+        <p>Duration: <span class="song-duration"></span></p>
+        <p>Popularity: <span class="song-popularity"></span></p>
+        <p>Explict: <span class="song-explict"></span></p>
+        <!-- <a id="spotify-link" href="#" target="_blank"><center>Listen on Spotify</center></a>  -->
+        <iframe id="spotify-link"  style="border-radius:12px" src="" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+        </div>
+      
+        <div class="song" id="song-3">
+          <h3><span class="song-name"></span></h3>
+          <p>Artist: <span class="song-artist"></span></p>
+          <p>Album: <span class="song-album"></span></p>
+          <p>Release Date: <span class="song-release-date"></span></p>
+          <p>Duration: <span class="song-duration"></span></p>
+          <p>Popularity: <span class="song-popularity"></span></p>
+          <p>Explict: <span class="song-explict"></span></p>
+          <!-- <a id="spotify-link" href="#" target="_blank"><center>Listen on Spotify</center></a>  -->
+          <iframe id="spotify-link"  style="border-radius:12px" src="" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+      </div>
+    </div>
+  
+
+    <h2>Top 3 Tracks of Artist</h2>
+  <div id="artist-top-3-track">
+    
+
+    <div id="track1" class="track-container">
+      <!-- <h2>--- Track 1 ---</h2> -->
+      <h3><span id="track1-name"></span></h3>
+      <p>Album Name: <span id="track1-album"></span></p>
+      <p>Album Release Date: <span id="track1-release-date"></span></p>
+      <p>Artists: <span id="track1-artists"></span></p>
+      <p>Duration: <span id="track1-duration"></span></p>
+      <p>Explicit: <span id="track1-explicit"></span></p>
+      <p>Popularity: <span id="track1-popularity"></span></p>
+
+      <!-- <div id="track1-preview">
+        <h3>Preview:</h3>
+        <audio id="track1-audio-preview" controls>
+          <source id="track1-audio-source" src="" type="audio/mp3">
+          Your browser does not support the audio element.
+        </audio>
+      </div> -->
+      
+      <!-- <a id="track1-url" href="#" target="_blank"><center>Listen on Spotify</center></a> -->
+      <iframe id="track1-url"  style="border-radius:12px" src="" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <div id="track2" class="track-container">
+      <!-- <h2>--- Track 2 ---</h2> -->
+      <h3><span id="track2-name"></span></h3>
+      <p>Album Name: <span id="track2-album"></span></p>
+      <p>Album Release Date: <span id="track2-release-date"></span></p>
+      <p>Artists: <span id="track2-artists"></span></p>
+      <p>Duration: <span id="track2-duration"></span></p>
+      <p>Explicit: <span id="track2-explicit"></span></p>
+      <p>Popularity: <span id="track2-popularity"></span></p>
+
+      <!-- <div id="track-preview">
+        <h3>Preview:</h3>
+        <audio id="track2-audio-preview" controls>
+          <source id="track2-audio-source" src="" type="audio/mp3">
+          Your browser does not support the audio element.
+        </audio>
+      </div> -->
+
+      <!-- <a id="track2-url" href="#" target="_blank"><center>Listen on Spotify</center></a> -->
+      <iframe id="track2-url"  style="border-radius:12px" src="" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+    </div>
+
+    <div id="track3" class="track-container">
+      <!-- <h2>--- Track 3 ---</h2> -->
+      <h3><span id="track3-name"></span></h3>
+      <p>Album Name: <span id="track3-album"></span></p>
+      <p>Album Release Date: <span id="track3-release-date"></span></p>
+      <p>Artists: <span id="track3-artists"></span></p>
+      <p>Duration: <span id="track3-duration"></span></p>
+      <p>Explicit: <span id="track3-explicit"></span></p>
+      <p>Popularity: <span id="track3-popularity"></span></p>
+      <iframe id="track3-url"  style="border-radius:12px" src="" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+
+      <!-- <div id="track-preview">
+        <h3>Preview:</h3>
+        <audio id="track3-audio-preview" controls>
+          <source id="track3-audio-source" src="" type="audio/mp3">
+          Your browser does not support the audio element.
+        </audio>
+      </div> -->
+      <!-- <a id="track3-url" href="#" target="_blank"><center>Listen on Spotify</center></a> -->
+      <!-- <iframe id="track3-url"  style="border-radius:12px" src="" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
+
+    </div>
+  </div>
+</div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="script.js"></script>
+  <!-- <script src="script.js" defer></script> -->
+  
+</body>
+</html>

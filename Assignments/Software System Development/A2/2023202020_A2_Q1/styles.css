@@ -1,0 +1,639 @@
+
+/*Default to all*/
+
+html {
+    height: 100%;
+    background: linear-gradient(to bottom, #9ad0f5, #cf8feb);
+    background-attachment: fixed;  /* This ensures the gradient remains fixed while scrolling */
+    
+}
+body {
+    font-family: 'Arial', sans-serif;
+    color: #470f49;
+    min-height: 100%;  /* Ensures the body takes up at least the full viewport height */
+    margin: 0;
+    padding: 0;
+    /* display: flex;  */
+    /* justify-content: center;  */
+    /* align-items: center; */
+    /* height: 100vh;  */
+}
+
+
+h1 span { 
+    color: #9f39ff;
+}
+h1 {
+    color: #5d14a1; 
+}
+h2 {
+    color: #0e347a; 
+}
+
+h3 {
+    color: #220377; 
+}
+
+
+/* List styles */
+ul {
+    padding-left: 40px;
+    margin-bottom: 40px;
+    list-style-type: disc;
+    padding-right: 200px;
+}
+
+ul li {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+p {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 1.1rem;
+}
+
+ul li a {
+    color: #5d14a1;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    color: #e07755;
+}
+
+
+
+
+/* Styles for the navigation bar */
+.navbar {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Style for navigation links */
+.navbar-right a {
+    text-decoration: none;
+    color: #ddd;
+    padding: 8px 12px;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0 10px;
+    transform: scale(1); /* default size */
+    transition: transform 0.3s ease; /* transition effect */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect for navigation links */
+.navbar-right a:hover {
+    background-color: #555;
+    color: #ff6f1c;
+    text-decoration: none; /* This removes the underline on hover */
+    transform: scale(1.1); /* slightly enlarged size */
+}
+
+
+.navbar-right a span::before, .navbar-right a span::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    background: #e6abab; /* Color of the underline */
+    transition: all 0.3s;
+}
+
+.navbar-right a span::before {
+    left: 50%;
+}
+
+.navbar-right a span::after {
+    right: 50%;
+}
+
+.navbar-right a:hover span::before, .navbar-right a:hover span::after {
+    width: 50%;
+}
+
+/* Style for the search input */
+.navbar-right input[type="search"] {
+    margin-left: 10px;
+    background-color: #808080; /* Gray shade */
+    color: #fff; /* Text color */
+    padding: 8px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    transition: width 0.3s ease-in-out, box-shadow 0.6s; /* Added transition for width */
+    width: 150px; /* Default width */
+}
+
+
+
+.navbar-right input[type="search"]::placeholder {
+    color: #fff; /* Placeholder color set to white */
+    opacity: 0.7; /* Slightly reduce opacity for a more subtle appearance */
+}
+
+/* Expand search input on focus */
+.navbar-right input[type="search"]:focus {
+    /* box-shadow: 0 0 10px #D4AF37; */
+    width: 250px; /* Width after expansion */
+}
+
+/* .navbar-left a {
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+ 
+}
+.navbar-left span {
+    font-size: 24px;
+    color: #ff6f1c;
+    font-weight: bold;
+} */
+
+.navbar-left {
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.navbar-left:hover {
+    transform: scale(1.05); /* Increase size slightly when hovered */
+}
+
+
+.navbar-left a {
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar-left span {
+    font-size: 24px;
+    color: #ff6f1c;
+    font-weight: bold;
+}
+
+
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+/************************************************************ABOUT******************************************************/
+
+/* Center the main content */
+.content {
+    text-align: center;
+    margin-top: 50px; /* Add some margin on top for spacing */
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+/* Initial states */
+.content h1, .content h2 {
+    opacity: 0;
+    transform: translateY(30px); /* Move them down a bit */
+    
+}
+
+/* Center the main content */
+.content {
+    text-align: center;
+    margin-top: 50px; /* Add some margin on top for spacing */
+    background: rgba(255, 255, 255, 0.1); 
+}
+
+
+/* Keyframes for the fade-in and move-up animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content h1 {
+    animation: fadeInUp 0.5s forwards 0.1s; /* animation-name, animation-duration, animation-fill-mode, animation-delay */
+
+    font-weight: 600; /* Slightly bold */
+    font-size: 2.5em; /* Adjust font size as needed */
+    margin-bottom: 10px;
+    
+}
+
+.content h2 {
+    animation: fadeInUp 0.5s forwards 0.3s;
+    font-weight: 200; /* Regular weight */
+    font-size: 1.2em; 
+    margin-top: 1px;
+}
+
+/* Faculty Image and About Section */
+/* Faculty Image Styles */
+.faculty-image {
+    text-align: center;
+    margin-top: 20px; /* Add some space at the top */
+}
+
+.faculty-image img {
+    border-radius: 10px; 
+    width: 30%; /* Reduced the image width for a smaller appearance */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Space between the image and the heading */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    /* border-radius: 30%; */
+
+    /* Page Load Animation */
+    opacity: 0; /* Start with the image being fully transparent */
+    transform: scale(0.95); /* Start with the image slightly smaller */
+    animation: fadeInZoom 1s forwards 0.5s; /* Apply the animation */
+}
+
+/* Hover Effect for Faculty Image */
+.faculty-image img:hover {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Add shadow effect */
+}
+
+/* Keyframes for the fadeInZoom animation */
+@keyframes fadeInZoom {
+    to {
+        opacity: 1; /* End with the image being fully visible */
+        transform: scale(1); /* End with the image at its original size */
+    }
+}
+
+
+/* About heading styling */
+.about-heading {
+    text-align: left;
+    margin-left: 20px; /* Some space from the left edge */
+    font-weight: bold;
+    margin-bottom: 10px; /* Space between heading and text */
+    font-size: 2em;
+    background: rgba(255, 255, 255, 0.1); 
+}
+
+.about-heading, .recent h2 {
+    transform-origin: left center; /* Adjusts the origin for transformations */
+}
+
+.about-heading:hover, .recent h2:hover {
+    transform: scale(1.05); /* Slight size increase */
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.2); /* Add a subtle shadow */
+    /* transition: transform 0.3s, text-shadow 0.3s;  */
+}
+
+
+/* About faculty text styling */
+.about-faculty {
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.5; /* For better readability */
+    margin-left: 20px; /* Some space from the left edge */
+    margin-right: 20px; /* Some space from the right edge */
+    
+}
+
+/* Style for the modern list */
+.modern-list {
+    list-style-type: disc; /* Default disc style bullets */
+    padding-left: 40px; /* Space for the disc bullets */
+}
+
+.modern-list li {
+    margin-bottom: 10px; /* Spacing between list items */
+    font-size: 16px;
+    line-height: 1.5;
+    
+}
+
+/* Recent Updates Section */
+/* Recent section styling */
+.recent {
+    padding: 20px; /* Add some padding around the entire section for better spacing */
+    font-family: 'Arial', sans-serif; /* You can use other web-friendly fonts like 'Roboto', 'Open Sans', etc. */
+    font-size: 1.5em;
+    background: rgba(255, 255, 255, 0.1); 
+}
+
+.recent h2 {
+    font-size: 24px; /* Increase the size for the heading */
+    font-weight: bold;
+    color:  #220377; /* Use a color that complements the website's theme */
+    border-bottom: 2px solid #000000; /* A bottom border for the heading */
+    padding-bottom: 10px; /* Some padding at the bottom to space out the border */
+    margin-bottom: 20px; /* Space between the heading and the list */
+}
+
+.recent ul {
+    padding-left: 20px; /* Restore the padding for the list */
+}
+
+.recent li {
+    font-size: 16px; /* Font size for list items */
+    color: #000000; /* Darker text color for better readability */
+    padding: 8px 0; /* Add some vertical padding for spacing */
+    margin-bottom: 5px;
+}
+
+/* For any link in the recent section */
+.recent li a {
+    color: #5d14a1; /* Deep purple to contrast the soft blue and purple background */
+    text-decoration: none; /* Underline for links */
+}
+
+.recent li a:hover {
+    color: #e07755; 
+}
+
+.recent b {
+    color: #5d14a1; 
+}
+
+.flash {
+    color: #ff2a2a; 
+}
+
+@keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; } 
+}
+
+.flash {
+    animation: flash 1s infinite; /* 1s duration, infinite loop */
+}
+
+.intern {
+    color:  #066438; 
+}
+
+
+
+/***********************************************************************RESEARCH*********************************************************/
+
+.research-heading {
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 30px;
+    
+    color: #5d14a1; 
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1); 
+
+}
+
+
+
+.research-heading span {
+    color: #9f39ff;
+    
+}
+
+/* Publications Styles */
+.publications {
+    padding: 20px;
+    margin-top: 20px;
+    list-style-type: disc;
+    padding-left: 200px; 
+    padding-right: 200px; 
+    
+}
+
+  
+
+.publications li {
+    margin-bottom: 20px;
+}
+
+.publications a {
+    color: #5d14a1;  /* Golden color for links for contrast */
+}
+
+.publications a:hover {
+    text-decoration: none; 
+    color: #e07755; 
+}
+
+/* Services Section Styles */
+.services-heading {
+    font-size: 30px; /* Increase the size for the heading */
+    font-weight: bold;
+    color:  #220377; /* Use a color that complements the website's theme */
+    border-bottom: 2px solid #000000; /* A bottom border for the heading */
+    padding-bottom: 10px; /* Some padding at the bottom to space out the border */
+    margin-bottom: 20px;
+    /* background: rgba(255, 255, 255, 0.1);  */
+}
+
+.services-list {
+    padding-right: 20px; 
+    padding-left: 20px; 
+    list-style-type: disc; /* Using the default bullet points */
+    
+}
+
+.services-list li {
+    margin-bottom: 15px;
+    /* padding-left: 20px; */
+    
+}
+
+.services-list a {
+    color: #5d14a1;
+}
+
+.services-list a:hover {
+    text-decoration: none; 
+    color: #e07755; 
+}
+.services{
+    padding-left: 200px;
+    padding-right: 200px;
+    margin-bottom: 20px;
+}
+b {
+    color: #5d14a1; 
+}
+.services-list b{
+    color:#521f5f;
+}
+
+/************************************************TEACHING****************************/
+.teaching-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 40px;
+    color: #5d14a1; 
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1); 
+
+}
+
+.sub-heading {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #220377;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-left: 4px solid #9f39ff;
+    background: rgba(255, 255, 255, 0.1); 
+}
+
+/************************************************EXPERIENCE****************************/
+
+.experience-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 30px;
+    color: #5d14a1; 
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 15px;
+    border-radius: 8px;
+}
+.experience-heading span {
+    color: #9f39ff;
+}
+
+
+/* Styling for the ordered list of experiences */
+.experience-list {
+    padding: 20px 200px;
+    list-style-type: decimal;  
+    font-size: 21px;
+    font-weight: bold;
+    
+    
+    
+}
+
+.experience-list > li {
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+
+    
+    
+}
+
+/* Styling for the nested unordered list of experiences */
+.experience-list li ul {
+    margin-top: 10px;
+    list-style-type: square;  
+    padding-left: 20px;
+}
+
+.experience-list li ul li {
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+
+/************************************************OTHERS****************************/
+
+/* Others Heading */
+.others-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 30px;
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.1);
+    color: #5d14a1; 
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+/* .others-heading span {
+    color: #9f39ff;
+} */
+
+/* Sub-Headings */
+.sub-heading {
+    font-size: 24px; 
+    font-weight: bold;
+    color: #220377;
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid #000000;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+
+
+/************************************************CONTACT****************************/
+
+.contact-page .contact-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 30px;
+    color: #5d14a1; 
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.contact-page p {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 15px;
+}
+
+
+.contact-page .social-links {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact-page .social-links li {
+    margin: 10px;
+}
+
+/* .contact-page .social-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+} */
+
+/* .contact-page .social-icon:hover {
+    transform: scale(1.2);
+} */
+
+/* Icon classes from Font Awesome */
+.contact-page .fa-google {
+    color: #DB4437;
+}
+
+.contact-page .fa-linkedin {
+    color: #0077B5;
+}
+
+.contact-page .fa-twitter {
+    color: #1DA1F2;
+}
+
+
+
+
