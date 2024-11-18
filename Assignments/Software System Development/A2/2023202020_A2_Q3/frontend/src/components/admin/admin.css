@@ -1,0 +1,150 @@
+/* .adminarea {
+    width: 400px;
+    background: #fff;
+    border: 1px solid #dddfe2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+  }
+  
+  .adminarea > label {
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+  
+  .adminarea > input {
+    border-radius: 12px;
+    border: 2px solid #dddfe2;
+    outline: none;
+    color: #1d2129;
+    margin: 0.5rem 0;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .adminarea > input:focus {
+    border-color: #1877f2;
+  }
+  
+  .adminarea > .button {
+    background: #1877f2;
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 12px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .adminarea > .button:hover {
+    background-color: #ca4321;
+    transform: scale(1.05);
+  } */
+
+  .adminarea {
+    width: 400px;
+    background: #fff;
+    border: 1px solid #dddfe2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+  }
+  
+  label {
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  input {
+    border-radius: 12px;
+    border: 2px solid #dddfe2;
+    outline: none;
+    color: #1d2129;
+    margin: 0.5rem 0;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .button {
+    background: #1877f2;
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 12px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  .toggle {
+    background: #1877f2;
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 12px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  
+.button:hover {
+    background-color: #ca4321;
+    transform: scale(1.05);
+  }
+
+.toggle:hover {
+    background-color: #ca4321;
+    transform: scale(1.05);
+  }
+
+  input:focus {
+    border-color: #1877f2;
+  }
+
+  .adminarea.dark-mode {
+    background-color: #4d4d4d;
+    color: #fff;
+}
+
+
+button.dark-mode {
+  background-color: #707070;
+  color: #fff;
+  border: 1px solid #555;
+}
+button.dark-mode {
+  background-color: #707070;
+  color: #fff;
+  border: 1px solid #555;
+}
+.adminarea.dark-mode h1,
+.adminarea.dark-mode p,
+.adminarea.dark-mode select {
+    color: #fff;
+}
