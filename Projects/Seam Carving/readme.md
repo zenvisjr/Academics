@@ -108,7 +108,6 @@ The algorithm follows these key steps to reduce the size both vertically and hor
 - Requires manual input for reduction amount
 
 ## Future Improvements
-- Automatic energy computation
 - Machine learning-based seam selection
 - Support for larger image size 
 
