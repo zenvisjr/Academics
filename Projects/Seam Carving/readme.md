@@ -1,5 +1,3 @@
-I'll create a comprehensive README.md for the Seam Carving Image Resizing Project:
-
 # Seam Carving Image Resizer
 
 ## Table of Contents
