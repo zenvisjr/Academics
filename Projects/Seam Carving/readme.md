@@ -9,7 +9,6 @@
 - [How It Works](#how-it-works)
 - [Technologies Used](#technologies-used)
 - [Sample Images](#sample-images)
-- [License](#license)
 - [Contact](#contact)
 
 ## Overview
