@@ -65,8 +65,27 @@ void findEnergyMatrix(int **a, Mat &rgb_matrix, int height_r, int width_c)
         }
 }
 
+
+//Function to print 2D matrix
+void printMatrix(int **a, int height_r, int width_c)
+{
+    for(int i=0;i<height_r;i++)
+    {
+        for(int j=0;j<width_c;j++)
+        {
+            cout<<a[i][j]<<" ";
+        }
+        cout<<endl;
+        
+    }
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
 //Function to apply DP on energy matrix horizontally
-void dpHorizontal(int **a, int height_r, int width_c)
+void dpVertical(int **a, int height_r, int width_c)
 {
     for(int r=1; r<height_r; r++)
         {
@@ -83,28 +102,14 @@ void dpHorizontal(int **a, int height_r, int width_c)
                 }
                 else
                 {
-                    a[r][c] =  a[r][c] + min(a[r-1][c-1], min(a[r-1][c], a[r-1][c+1]));
+                    a[r][c] =  a[r][c] + min({a[r-1][c-1], a[r-1][c], a[r-1][c+1]});
                 }
             }
         }
 }
 
-//Function to print 2D matrix
-void printMatrix(int **a, int height_r, int width_c)
-{
-    for(int i=0;i<height_r;i++)
-    {
-        for(int j=0;j<width_c;j++)
-        {
-            cout<<a[i][j]<<" ";
-        }
-        cout<<endl;
-        
-    }
-}
-
 //Function to calculate seam array to get min cost path vertically
-void calculateSeamHorizontal(int *seam, int **a, int height_r, int width_c)
+void calculateSeamVertical(int *seam, int **a, int height_r, int width_c)
 {
     //Calculating index of min cost in last row
     int j, index, min;
@@ -173,33 +178,36 @@ void calculateSeamHorizontal(int *seam, int **a, int height_r, int width_c)
 }
 
 //FUnction to change rgb value of min cost pixel to 0,0,255 vertically
-void showingSeamHorizontal(Mat &test, int *seam, int height_r)
+void showingSeamVertical(Mat &test, int *seam, int height_r)
 {
     for(int r=0;r<height_r; r++)
     {   
         int c = seam[r];
 
         Vec3b &change_rgb = test.at<Vec3b>(r, c);
-            change_rgb[0] = 0;
+            change_rgb[0] = 255;
             change_rgb[1] = 0;
-            change_rgb[2] = 255;
+            change_rgb[2] = 0;
     } 
 }
 
 //Function to shift pixels to remove min seam horizontally
-void shiftPixelHorizontal(int *seam, Mat &test, int height_r, int width_c)
+void shiftPixelVertical(int *seam, Mat &test, int height_r, int width_c)
 {
     for(int i=0;i<height_r; i++)
     {
-        for(int j = seam[i]; j<width_c-1;j++)
+        for(int j = seam[i]; j<width_c - 1 ;j++)
         {
             test.at<Vec3b>(i, j) = test.at<Vec3b>(i, j+1);
         }
     }
 }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
             
 //Function to apply DP on energy matrix vertically
-void dpVertical(int **a, int height_r, int width_c)
+void dpHorizontal(int **a, int height_r, int width_c)
 {
     for(int c=1; c<width_c; c++)
     {
@@ -222,7 +230,7 @@ void dpVertical(int **a, int height_r, int width_c)
 }
 
 //Function to calculate seam array to get min cost path horizontally
-void calculateSeamVertical(int *seam, int **a, int height_r, int width_c)
+void calculateSeamHorizontal(int *seam, int **a, int height_r, int width_c)
 {
     //Calculating index of min cost in last column
     int index, j;
@@ -290,7 +298,7 @@ void calculateSeamVertical(int *seam, int **a, int height_r, int width_c)
 }
 
 //Function to change rgb value of min cost pixel to 0,0,255 horizontally
-void showingSeamVertical(Mat &test, int *seam, int width_c)
+void showingSeamHorizontal(Mat &test, int *seam, int width_c)
 {
     for(int c=0;c<width_c; c++)
     {   //cout<<"fucked"<<i<<"   ";
@@ -298,13 +306,13 @@ void showingSeamVertical(Mat &test, int *seam, int width_c)
         //int r = i;
         Vec3b &change_rgb = test.at<Vec3b>(r, c);
         change_rgb[0] = 0;
-        change_rgb[1] = 0;
-        change_rgb[2] = 255;
+        change_rgb[1] = 255;
+        change_rgb[2] = 0;
     } 
 }
 
 //Function to shift pixels to remove min seam vertically
-void shiftPixelVertical(int *seam, Mat &test, int height_r, int width_c)
+void shiftPixelHorizontal(int *seam, Mat &test, int height_r, int width_c)
 {
      for(int i=0;i<width_c; i++)
     {
@@ -333,9 +341,9 @@ int main(int argc, char** argv)
     }
     
     // reading heigth and width to modifiy input image
-    cout<<"Enter the height and width you want to remove: "<<endl;
+    cout<<"Enter the width and height you want to remove: "<<endl;
     int height, width;
-    cin>>height>>width;
+    cin>>width>>height;
 
     //Defining a matrix to store RGB values 
     Mat rgb_matrix(height_r, width_c, CV_8UC3);
@@ -346,12 +354,13 @@ int main(int argc, char** argv)
     for (int i = 0; i < height_r; i++) 
     {
         a[i] = new int[width_c];
-    }
+    }   
 
-    //***********************************HORIZONTAL SEAMING***************************************
+    //***********************************VERTICAL SEAMING***************************************
 
     for(int c=0; c<width; c++)
     {
+        // cout<<"vertical"<<endl;
         width_c = test.cols;
         
         // Extracting RGB values from image and storing it in rgb_matrix for futher processing
@@ -360,8 +369,8 @@ int main(int argc, char** argv)
         //Finding Energy matrix 'a'
         findEnergyMatrix(a, rgb_matrix, height_r, width_c);
 
-        //Finding a single seam from top to bottom in vertical direction
-        dpHorizontal(a, height_r, width_c);
+        //Finding a single seam from top to bottom in vertical direction WITH ONE PIXEL IN EACH ROW
+        dpVertical(a, height_r, width_c);
 
         //printMatrix(a, height_r, width_c);
 
@@ -369,51 +378,55 @@ int main(int argc, char** argv)
         int* seam = new int[height_r];
 
         //calculating min cost index of a seam 
-        calculateSeamHorizontal(seam, a, height_r, width_c);
+        calculateSeamVertical(seam, a, height_r, width_c);
 
         //Making seam visible in red colour
-        showingSeamHorizontal(test, seam, height_r);
+        showingSeamVertical(test, seam, height_r);
 
         //Showing operation on image  
         imshow("hy",test);
         waitKey(1);
 
         //Shifting pixels to reduce image in horizontally
-        shiftPixelHorizontal(seam, test, height_r, width_c);
+        shiftPixelVertical(seam, test, height_r, width_c);
         
         //Reducing size of image horizontally
         test.cols--;
     }
+    width_c = test.cols;
+    cout<<"width: "<<width_c<<endl;
     
-    //***********************************VERTICAL SEAMING***************************************
+    //***********************************HORIZONTAL SEAMING***************************************
     
     for(int r=0; r<height; r++)
     {
+        // cout<<"horizontal"<<endl;
+        
         height_r = test.rows;
 
         extractRGB(test, rgb_matrix, height_r, width_c);
     
         findEnergyMatrix(a, rgb_matrix, height_r, width_c);
 
-        dpVertical(a, height_r, width_c);
+        dpHorizontal(a, height_r, width_c);
 
         int* seam = new int[width_c];
 
-        calculateSeamVertical(seam, a, height_r, width_c);
+        calculateSeamHorizontal(seam, a, height_r, width_c);
 
-        showingSeamVertical(test, seam, height_r);
+        showingSeamHorizontal(test, seam, width_c);
 
         imshow("hy",test);
         waitKey(1);
 
-        shiftPixelVertical(seam, test, height_r, width_c);
+        shiftPixelHorizontal(seam, test, height_r, width_c);
         
         test.rows--;
     }
 
     //Displaying modified image height and width
-    cout<<"Modified Image Height: "<<height_r<<endl;
-    cout<<"Modified Image Width: "<<width_c<<endl;
+    cout<<"New image height: "<<height_r<<endl;
+    cout<<"New image width: "<<width_c<<endl;
 
     //Displaying modified image
     imshow("hy", test);
