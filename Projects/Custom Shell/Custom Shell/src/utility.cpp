@@ -121,6 +121,20 @@ void extract(vector<string>& arguments, string &separator, vector<string>& com, 
     }
 }
 
+string tokenize(string &input) {
+    string res = "";
+    string temp = "";
+    for (char ch : input) {
+        if(ch == ' ') {
+            if(temp.size() > 0) res += temp + " ";
+            temp = "";
+        }
+        else temp += ch;
+    }
+    if(temp.size() > 0) res += temp;
+    else temp.pop_back();     //remove last blank space
+    return res;
+}
 
 
 

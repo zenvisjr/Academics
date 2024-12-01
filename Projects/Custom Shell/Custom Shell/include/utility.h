@@ -8,5 +8,5 @@ void tokenize_string(std::vector<std::string>& tokens, std::string& input);
 void print(std::vector<std::string>);
 std::string find_separator(std::vector<std::string>& arguments);
 void extract(std::vector<std::string>& arguments, std::string& separator, std::vector<std::string>& command, std::vector<std::string>& output);
-
+std::string tokenize(std::string &input);
 #endif

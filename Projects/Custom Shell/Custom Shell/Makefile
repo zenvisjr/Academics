@@ -8,7 +8,7 @@ INCLUDE_DIR = include
 BUILD_DIR = build
 
 # Target
-TARGET = $(BUILD_DIR)/my_shell
+TARGET = $(BUILD_DIR)/endgame
 
 # Find all .cpp files in src folder
 SRC = $(wildcard $(SRC_DIR)/*.cpp)

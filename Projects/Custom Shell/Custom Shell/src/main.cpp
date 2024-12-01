@@ -19,33 +19,6 @@
 
 using namespace std;
 
-bool echo( std::string& command)
-{
-    string text;
-    if(command.size() == 4)
-    {
-        cout<<endl;
-        return true;
-    }
-    else if(command.substr(0, 5) == "echo ")
-    {
-        text = command.substr(5);
-        text = trim(text);
-        /*if (text.front() == '"' && text.back() == '"') 
-        {
-            text = text.substr(1, text.length() - 2);
-        }
-        else if (text.front() == '\'' && text.back() == '\'') 
-        {
-            text = text.substr(1, text.length() - 2);
-        }*/
-        //cout<<"echoooooo"<<endl;
-        cout<<text<<endl;
-        return true;
-    }
-    else return false;
-}
-
 
 char curr_dir[500];            // Declare the global variable
 string home;
@@ -54,7 +27,8 @@ string prev_dir;
 vector<string> history;
 
 int main()
-{   cout<<"compiled"<<endl;
+{   
+    cout<<"compiled"<<endl;
     //extracting username
     char *username = getenv("USER");                        //getenv() function returns a pointer to the value  in  the  environment, or NULL if there is no match
     if(username == nullptr)
