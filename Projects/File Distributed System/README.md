@@ -28,7 +28,7 @@
 3. **Compile the Client Code**:
 
     ```bash
-    g++ client.cpp -o client -lcrypto
+    g++ client.cpp -o client -lssl -lcrypto
     ```
 
 4. **Start the Client**:
