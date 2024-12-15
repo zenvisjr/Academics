@@ -1,6 +1,3 @@
-Here’s a detailed `README.md` for your ADHD prediction system project, explaining its purpose, implementation, and how to use it:
-
----
 
 # ADHD Prediction System
 
