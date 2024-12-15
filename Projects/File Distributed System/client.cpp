@@ -1009,6 +1009,70 @@ void RecieveFile(int clientSocket, string destinationPath, string fileName)
     // cout << "Final concatenated hash of chunks recieved from client: " << finalHash << endl;
 }
 
+void DownloadHandler(string clientIP, string port)
+{
+    int clientPort = stoi(port);
+    
+    // cout<<"Entering download handler"<<endl;
+    // Step 1: Create a new socket
+    int listeningSocket = socket(AF_INET, SOCK_STREAM, 0);
+    if (listeningSocket == -1) 
+    {
+        perror("Can't create listening socket");
+        exit(1);
+    }
+
+    // Step 2: Bind the socket
+    sockaddr_in listeningAddress;
+    listeningAddress.sin_family = AF_INET;
+    listeningAddress.sin_port = htons(clientPort);  
+    inet_pton(AF_INET, clientIP.c_str(), &listeningAddress.sin_addr);  
+
+    if (bind(listeningSocket, (struct sockaddr*)&listeningAddress, sizeof(listeningAddress)) == -1) 
+    {
+        perror("Can't bind listening socket");
+        exit(1);
+    }
+
+    // Step 3: Put the socket in listen mode
+    if (listen(listeningSocket, MAX_CONNECTION) == -1) 
+    {
+        perror("Can't listen on listening socket");
+        exit(1);
+    }
+    else
+    {
+        cout<<"Client is listening for request on "<<clientIP<<":"<<clientPort<<endl;
+
+    }
+
+
+    // Step 4 and 5: Loop to accept and handle incoming connections
+    while (true) 
+    {
+        // cout<<"Enterinng accept phase"<<endl;
+        sockaddr_in clientAddress;
+        socklen_t clientSize = sizeof(clientAddress);
+        int clientSocket = accept(listeningSocket, (struct sockaddr*)&clientAddress, &clientSize);
+        
+        if (clientSocket == -1) 
+        {
+            perror("Can't accept client");
+            continue;  // go back to listening for the next client
+        }
+        else if(clientSocket > 0)
+        {
+            cout<<"Accepted connection from other client"<<endl;
+        }
+        
+        // Spawn a new thread to handle this client
+        thread downloadThread(ShareToClient, clientSocket);
+        downloadThread.detach();  // detach the thread
+
+        
+    }
+
+}
 
 void ShareToClient(int listeningSocket)
 {
@@ -1108,70 +1172,7 @@ void SendFile(int clientSocket, string fpath, string fname)
 
 }
 
-void DownloadHandler(string clientIP, string port)
-{
-    int clientPort = stoi(port);
-    
-    // cout<<"Entering download handler"<<endl;
-    // Step 1: Create a new socket
-    int listeningSocket = socket(AF_INET, SOCK_STREAM, 0);
-    if (listeningSocket == -1) 
-    {
-        perror("Can't create listening socket");
-        exit(1);
-    }
 
-    // Step 2: Bind the socket
-    sockaddr_in listeningAddress;
-    listeningAddress.sin_family = AF_INET;
-    listeningAddress.sin_port = htons(clientPort);  
-    inet_pton(AF_INET, clientIP.c_str(), &listeningAddress.sin_addr);  
-
-    if (bind(listeningSocket, (struct sockaddr*)&listeningAddress, sizeof(listeningAddress)) == -1) 
-    {
-        perror("Can't bind listening socket");
-        exit(1);
-    }
-
-    // Step 3: Put the socket in listen mode
-    if (listen(listeningSocket, MAX_CONNECTION) == -1) 
-    {
-        perror("Can't listen on listening socket");
-        exit(1);
-    }
-    else
-    {
-        cout<<"Client is listening for request on "<<clientIP<<":"<<clientPort<<endl;
-
-    }
-
-
-    // Step 4 and 5: Loop to accept and handle incoming connections
-    while (true) 
-    {
-        // cout<<"Enterinng accept phase"<<endl;
-        sockaddr_in clientAddress;
-        socklen_t clientSize = sizeof(clientAddress);
-        int clientSocket = accept(listeningSocket, (struct sockaddr*)&clientAddress, &clientSize);
-        
-        if (clientSocket == -1) 
-        {
-            perror("Can't accept client");
-            continue;  // go back to listening for the next client
-        }
-        else if(clientSocket > 0)
-        {
-            cout<<"Accepted connection from other client"<<endl;
-        }
-        
-        // Spawn a new thread to handle this client
-        thread downloadThread(ShareToClient, clientSocket);
-        downloadThread.detach();  // detach the thread
-
-        
-    }
-
-}
 
 
 void FindFileMetadata(string filePath, string &command)
@@ -1305,16 +1306,6 @@ void print(vector<string>& str)
         cout<<v<<endl;
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
