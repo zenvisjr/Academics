@@ -14,9 +14,24 @@ void background(std::vector<std::string>& arguments)
     }
     else if(pid == 0)
     {
-         
-        call_exec(arguments);//cout<<"child: "<<pid<<endl;
-        //setpgid(0, 0);
+
+        // call_exec(arguments);//cout<<"child: "<<pid<<endl;              
+
+         // Child process
+        // Convert std::vector<std::string> to char* array for execvp
+        std::vector<char*> args;
+        for (auto& arg : arguments)
+        {
+            args.push_back(&arg[0]); // Get pointer to the underlying string data
+        }
+        args.push_back(nullptr); // Null-terminate the argument list
+
+        // Execute the program
+        execvp(args[0], args.data());
+        
+        // If execvp returns, it means there was an error
+        perror("execvp failed");
+        exit(1);
         
     }
     else 
